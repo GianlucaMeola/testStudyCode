@@ -5769,11 +5769,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Gianluca\\Local\\test\\GameEngine\\GameEngine.Test\\GameEngine.Test.csproj",
+      "projectUniqueName": "C:\\Gianluca\\Local\\test\\testStudyCode\\GameEngine\\GameEngine.Test\\GameEngine.Test.csproj",
       "projectName": "GameEngine.Test",
-      "projectPath": "C:\\Gianluca\\Local\\test\\GameEngine\\GameEngine.Test\\GameEngine.Test.csproj",
+      "projectPath": "C:\\Gianluca\\Local\\test\\testStudyCode\\GameEngine\\GameEngine.Test\\GameEngine.Test.csproj",
       "packagesPath": "C:\\Users\\Gianluca.Meola\\.nuget\\packages\\",
-      "outputPath": "C:\\Gianluca\\Local\\test\\GameEngine\\GameEngine.Test\\obj\\",
+      "outputPath": "C:\\Gianluca\\Local\\test\\testStudyCode\\GameEngine\\GameEngine.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5793,8 +5793,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Gianluca\\Local\\test\\GameEngine\\GameEngine\\GameEngine.csproj": {
-              "projectPath": "C:\\Gianluca\\Local\\test\\GameEngine\\GameEngine\\GameEngine.csproj"
+            "C:\\Gianluca\\Local\\test\\testStudyCode\\GameEngine\\GameEngine\\GameEngine.csproj": {
+              "projectPath": "C:\\Gianluca\\Local\\test\\testStudyCode\\GameEngine\\GameEngine\\GameEngine.csproj"
             }
           }
         }

@@ -7,3 +7,12 @@ C:\Gianluca\Local\test\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine
 C:\Gianluca\Local\test\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.AssemblyInfo.cs
 C:\Gianluca\Local\test\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.dll
 C:\Gianluca\Local\test\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.pdb
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\bin\Debug\netstandard1.6\GameEngine.deps.json
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\bin\Debug\netstandard1.6\GameEngine.dll
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\bin\Debug\netstandard1.6\GameEngine.pdb
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.csprojAssemblyReference.cache
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.csproj.CoreCompileInputs.cache
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.AssemblyInfoInputs.cache
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.AssemblyInfo.cs
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.dll
+C:\Gianluca\Local\test\testStudyCode\GameEngine\GameEngine\obj\Debug\netstandard1.6\GameEngine.pdb
