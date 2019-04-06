@@ -72,5 +72,45 @@ namespace GameEngine.Test
             //assert
             Assert.IsAssignableFrom<Enemy>(enemy);
         }
+
+        [Fact]
+        private void TwoEnemyAreDIfferent()
+        {
+            //arrange
+            Enemy enemy1 = sut.Create("Zoombie");
+            Enemy enemy2 = sut.Create("Zoombie");
+
+
+            //act
+
+            //assert
+            Assert.NotSame(enemy1, enemy2);
+        }
+
+        [Fact]
+        private void NoNullNameAccepted()
+        {
+            //arrange
+
+            //Act
+
+            //Assert
+            //Assert.Throws<ArgumentNullException>(() => sut.Create(null));
+            Assert.Throws<ArgumentNullException>("name", () => sut.Create(null));
+        }
+
+        [Fact]
+        private void ValidBossName()
+        {
+            //arrange
+
+            //act
+
+            //assert
+            EnemyCreationException ex =
+            Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", true));
+
+            Assert.Equal("Zombie", ex.RequestedEnemyName);
+        }
     }
 }
