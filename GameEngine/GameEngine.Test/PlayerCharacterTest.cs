@@ -218,5 +218,31 @@ namespace GameEngine.Test
             //arrange
             Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
         }
+
+        [Fact]
+        private void SleepShouldRaiseSleptEvent()
+        {
+            //arrange
+
+            //act
+
+            //assert
+            Assert.Raises<EventArgs>(
+                handle => _sut.PlayerSlept += handle,
+                handle => _sut.PlayerSlept -= handle,
+                () => _sut.Sleep()
+                );
+        }
+
+        [Fact]
+        private void ChangeHealtOnDamage()
+        {
+            //arrange
+
+            //act
+
+            //assert
+            Assert.PropertyChanged(_sut, "health", () => _sut.TakeDamage(10));
+        }
     }
 }
