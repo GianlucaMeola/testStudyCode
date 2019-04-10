@@ -20,7 +20,7 @@ namespace GameEngine.Test
 
         public void Dispose()
         {
-            _output.WriteLine("Disposing PlayerCharacter {0}", _sut.FullName);
+            _output.WriteLine($"Disposing PlayerCharacter {_sut.FullName}");
             //_sut.Dispose();
         }
 
@@ -255,6 +255,22 @@ namespace GameEngine.Test
 
             //assert
             Assert.PropertyChanged(_sut, "health", () => _sut.TakeDamage(10));
+        }
+
+        [Theory]
+        [InlineData(0, 100)]
+        [InlineData(50, 50)]
+        [InlineData(1, 99)]
+        [InlineData(101, 1)]
+        public void TakeDamageTest(int damage, int expectedHealth)
+        {
+            //arrange
+
+            //act
+            _sut.TakeDamage(damage);
+
+            //assert
+            Assert.Equal(expectedHealth, _sut.Health);
         }
     }
 }

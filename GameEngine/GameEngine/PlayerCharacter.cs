@@ -49,7 +49,7 @@ namespace GameEngine
         {
             var rnd = new Random();
 
-            return rnd.Next(1, 101);
+            return rnd.Next(1, 101);            
         }
 
         
@@ -85,6 +85,8 @@ namespace GameEngine
                 "Long Bow",
                 "Short Bow",
                 "Short Sword",
+                //""
+                //"Staff Of Wonder",
             };
         }
 

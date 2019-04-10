@@ -1,26 +1,36 @@
-﻿using Xunit;
+﻿using GameEngine.Tests;
+using  Xunit.Abstractions;
+using Xunit;
 
 namespace GameEngine.Test
 {
-    public class GameStateTest
+    public class GameStateTest : IClassFixture<GameStateFixture>
     {
+        private readonly GameStateFixture _gameStateFixture;
+        private readonly ITestOutputHelper _output;
+
+        public GameStateTest(GameStateFixture gameStateFixture, ITestOutputHelper output)
+        {
+            _gameStateFixture = gameStateFixture;
+            _output = output;
+        }
+
         [Fact]
         private void DamageAllPlayerWhenEarthquake()
         {
             //arrange
-            var sut = new GameState();
-
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
             var player1 = new PlayerCharacter();
             var player2 = new PlayerCharacter();
 
-            sut.Players.Add(player1);
-            sut.Players.Add(player2);
+            _gameStateFixture.State.Players.Add(player1);
+            _gameStateFixture.State.Players.Add(player2);
 
             var expectedHealtAfterEarthquake = player1.Health - GameState.EarthquakeDamage;
 
 
             //act
-            sut.Earthquake();
+            _gameStateFixture.State.Earthquake();
 
             //assert
             Assert.Equal(expectedHealtAfterEarthquake, player1.Health);
@@ -31,19 +41,19 @@ namespace GameEngine.Test
         private void Reset()
         {
             //arrange
-            var sut = new GameState();
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
 
             var player1 = new PlayerCharacter();
             var player2 = new PlayerCharacter();
 
-            sut.Players.Add(player1);
-            sut.Players.Add(player2);
+            _gameStateFixture.State.Players.Add(player1);
+            _gameStateFixture.State.Players.Add(player2);
 
             //act
-            sut.Reset();
+            _gameStateFixture.State.Reset();
 
             //assert
-            Assert.Empty(sut.Players);
+            Assert.Empty(_gameStateFixture.State.Players);
         }
     }
 }

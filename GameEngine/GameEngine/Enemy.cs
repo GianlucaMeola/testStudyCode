@@ -5,6 +5,6 @@
         public string Name { get; set; }
         public abstract double TotalSpecialPower { get; }
         public abstract double SpecialPowerUses { get; }
-        public double TotalSpecialAttackPower => TotalSpecialPower / SpecialPowerUses;
+        public double SpecialAttackPower => TotalSpecialPower / SpecialPowerUses;
     }
 }
