@@ -25,11 +25,11 @@ namespace CreditCardApplications
             throw new NotImplementedException("For demo purposes");
         }
 
-        /*public IServiceInformation ServiceInformation
+        public IServiceInformation ServiceInformation
         {
             get
             {
-                throw new NotImplementedException("For demo purposes");
+                throw new NotImplementedException("For Demo propose");
             }
         }
 
@@ -37,7 +37,7 @@ namespace CreditCardApplications
         {
             get => throw new NotImplementedException("For demo purposes");
             set => throw new NotImplementedException("For demo purposes");
-        }*/
+        }
 
         //public event EventHandler ValidatorLookupPerformed;
     }

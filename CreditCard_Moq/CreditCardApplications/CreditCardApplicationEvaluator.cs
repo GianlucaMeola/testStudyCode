@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CreditCardApplications
 {
     public class CreditCardApplicationEvaluator
     {
-        private readonly IFrequentFlyerNumberValidator _validator;
+        private IFrequentFlyerNumberValidator _validator;
         //private readonly FraudLookup _fraudLookup;
 
         private const int AutoReferralMaxAge = 20;
@@ -87,7 +88,12 @@ namespace CreditCardApplications
                 return CreditCardApplicationDecision.AutoAccepted;
             }
 
-            //_validator.IsValid(application.FrequentFlyerNumber, out var isValidFrequentFlyerNumber);
+            if (_validator.ServiceInformation.License.LicenseKey == "EXPIRED")
+            {
+                return CreditCardApplicationDecision.ReferredToHuman;
+            }
+
+            _validator.ValidationMode = application.Age >= 30 ? ValidationMode.Detailed : ValidationMode.Quick;
 
             var isValidFrequentFlyerNumber = _validator.IsValid(application.FrequentFlyerNumber);
 
@@ -109,7 +115,7 @@ namespace CreditCardApplications
             return CreditCardApplicationDecision.ReferredToHuman;
         }
 
-        public CreditCardApplicationDecision EvaluateUsingOut(CreditCardApplication application)
+        /*public CreditCardApplicationDecision EvaluateUsingOut(CreditCardApplication application)
         {
             if (application.GrossAnnualIncome >= HighIncomeThreshhold)
             {
@@ -134,7 +140,7 @@ namespace CreditCardApplications
             }
 
             return CreditCardApplicationDecision.ReferredToHuman;
-        }
+        }*/
 
     }
 }
