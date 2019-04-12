@@ -6,7 +6,7 @@ namespace CreditCardApplications
     public class CreditCardApplicationEvaluator
     {
         private IFrequentFlyerNumberValidator _validator;
-        //private readonly FraudLookup _fraudLookup;
+        private readonly FraudLookup _fraudLookup;
 
         private const int AutoReferralMaxAge = 20;
         private const int HighIncomeThreshhold = 100_000;
@@ -14,21 +14,22 @@ namespace CreditCardApplications
 
         public int ValidatorLookupCount { get; private set; }
 
-        public CreditCardApplicationEvaluator(IFrequentFlyerNumberValidator validator) { 
-        //    FraudLookup fraudLookup = null)
-        //{
+        public CreditCardApplicationEvaluator(
+           IFrequentFlyerNumberValidator validator, 
+           FraudLookup fraudLookup = null)
+        {
             _validator = validator ??
                 throw new System.ArgumentNullException(nameof(validator));
 
-        //    _validator.ValidatorLookupPerformed += ValidatorLookupPerformed;
+            _validator.ValidatorLookupPerformed += ValidatorLookupPerformed;
 
-        //    _fraudLookup = fraudLookup;
+            _fraudLookup = fraudLookup;
         }
 
-/*        private void ValidatorLookupPerformed(object sender, EventArgs e)
+        private void ValidatorLookupPerformed(object sender, EventArgs e)
         {
             ValidatorLookupCount++;
-        }*/
+        }
 
         //public CreditCardApplicationDecision Evaluate(CreditCardApplication application)
         //{
@@ -83,6 +84,11 @@ namespace CreditCardApplications
 
         public CreditCardApplicationDecision Evaluate(CreditCardApplication application)
         {
+            if (_fraudLookup != null && _fraudLookup.IsFraudRisk(application))
+            {
+                return CreditCardApplicationDecision.ReferredToHumanFraudRisk;
+            }
+
             if (application.GrossAnnualIncome >= HighIncomeThreshhold)
             {
                 return CreditCardApplicationDecision.AutoAccepted;
@@ -95,7 +101,16 @@ namespace CreditCardApplications
 
             _validator.ValidationMode = application.Age >= 30 ? ValidationMode.Detailed : ValidationMode.Quick;
 
-            var isValidFrequentFlyerNumber = _validator.IsValid(application.FrequentFlyerNumber);
+            bool isValidFrequentFlyerNumber;
+            try
+            {
+                isValidFrequentFlyerNumber = _validator.IsValid(application.FrequentFlyerNumber);
+            }
+            catch
+            {
+                //log
+                return CreditCardApplicationDecision.ReferredToHuman;
+            }
 
             if (!isValidFrequentFlyerNumber)
             {
